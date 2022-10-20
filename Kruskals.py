@@ -1,3 +1,5 @@
+from Graph_Operations import process_am
+from Graph_Operations import non_zero_vals
 adjacency_matrix = [
     [0,1,0,4,0,0,0],
     [1,0,2,6,4,0,0],
@@ -8,24 +10,24 @@ adjacency_matrix = [
     [0,0,0,4,7,3,0],
 ]
 # this function takes an adjacency matrix and returns a nodes_list, arcs_list, weights_list.
-def process_am(A):
-    # create nodes list
-    nodes_list = []
-    components_list = []
-    for x in range(1,len(adjacency_matrix[0])+1):
-        nodes_list.append(f'a{x}')
-        components_list.append({f'a{x}'})
-    # here we create the arc and weight lists simultaneously
-    arcs_list = []
-    weight_list = []
-    num_nodes = len(adjacency_matrix[0])
-    first_col_num = 0
-    for row in range(num_nodes):
-        first_col_num += 1
-        for col in range(first_col_num,num_nodes):
-            arcs_list.append([nodes_list[row], nodes_list[col]])
-            weight_list.append(adjacency_matrix[row][col])
-    return nodes_list, components_list, arcs_list, weight_list
+# def process_am(A):
+#     # create nodes list
+#     nodes_list = []
+#     components_list = []
+#     for x in range(1,len(adjacency_matrix[0])+1):
+#         nodes_list.append(f'a{x}')
+#         components_list.append({f'a{x}'})
+#     # here we create the arc and weight lists simultaneously
+#     arcs_list = []
+#     weight_list = []
+#     num_nodes = len(adjacency_matrix[0])
+#     first_col_num = 0
+#     for row in range(num_nodes):
+#         first_col_num += 1
+#         for col in range(first_col_num,num_nodes):
+#             arcs_list.append([nodes_list[row], nodes_list[col]])
+#             weight_list.append(adjacency_matrix[row][col])
+#     return nodes_list, components_list, arcs_list, weight_list
 
 # takes node and returns component
 def find_component(node, components_list):
@@ -33,18 +35,18 @@ def find_component(node, components_list):
         if node in component:
             return component
 # takes weightlist and arclist and removes all arcs with a zero weight
-def non_zero_vals(weight_list, arc_list):
-    new_weight_list = []
-    new_arc_list = []
-    for ind, elem in enumerate(weight_list):
-        if elem != 0:
-            new_weight_list.append(weight_list[ind])
-            new_arc_list.append(arc_list[ind])
-    return new_weight_list, new_arc_list
+# def non_zero_vals(weight_list, arc_list):
+#     new_weight_list = []
+#     new_arc_list = []
+#     for ind, elem in enumerate(weight_list):
+#         if elem != 0:
+#             new_weight_list.append(weight_list[ind])
+#             new_arc_list.append(arc_list[ind])
+#     return new_weight_list, new_arc_list
 
 # define a function kruskal which simply takes a single adjacency matrix as it's only argument
 def kruskal(A):
-    nodes_list, components_list, arcs_list, weight_list = process_am(A)
+    nodes_list, components_list, arcs_list, weight_list = process_am(A, 'Kruskal')
     T = set()
     n = len(nodes_list)
     weight_list, arcs_list = non_zero_vals(weight_list, arcs_list)
