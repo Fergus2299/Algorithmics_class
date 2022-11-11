@@ -1,5 +1,9 @@
-
 def process_am(A, setting):
+    """A:argument is the adjacency matrix
+    setting:argument tells us the algorithm we are using since there is different information we need.
+
+    this function will return lists containing the nodes, arcs and their corresponding weights
+    in the case where setting == Kruskal then it will return the components list to start the algorithm"""
     if setting == 'Kruskal' or setting == 'Kruskals':
         # create nodes list
         nodes_list = []
@@ -42,6 +46,7 @@ def non_zero_vals(weight_list, arc_list):
 def simultaneous_sort(a, b):
     new_a = []
     new_b = []
+    # insertion-style sorting is used to place the lists in order
     for ind, elem in enumerate(a):
         i = len(new_a) - 1
         while i >= 0 and new_a[i] > elem:

@@ -8,7 +8,7 @@ def find_component(node, components_list):
             return component
 
 
-# define a function kruskal which simply takes a single adjacency matrix as it's only argument
+# takes a single adjacency matrix as it's only argument and applies kruskal's algo
 def kruskal(A):
     nodes_list, components_list, arcs_list, weight_list = process_am(A, 'Kruskal')
     T = set()
