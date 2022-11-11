@@ -38,4 +38,3 @@ def prim(A):
         arc, b = find_mincost_prim(nodes_list, arcs_list, weight_list, b)
         T.add(tuple(arc))
     return T
-print(prim(adjacency_matrix))
