@@ -1,5 +1,5 @@
-from Graph_Operations import process_am
-from Graph_Operations import non_zero_vals
+from graph_algos.Graph_Operations import process_am
+from graph_algos.Graph_Operations import non_zero_vals
 
 # takes node and returns component
 def find_component(node, components_list):

@@ -1,17 +1,8 @@
 
-from Graph_Operations import process_am
-from Graph_Operations import non_zero_vals
-from Graph_Operations import simultaneous_sort
-import random
-adjacency_matrix = [
-    [0,1,0,4,0,0,0],
-    [1,0,2,6,4,0,0],
-    [0,2,0,0,5,6,0],
-    [4,6,0,0,3,0,4],
-    [0,4,5,3,0,8,7],
-    [0,0,6,0,8,0,3],
-    [0,0,0,4,7,3,0],
-]
+from graph_algos.Graph_Operations import process_am
+from graph_algos.Graph_Operations import non_zero_vals
+from graph_algos.Graph_Operations import simultaneous_sort
+
 
 def find_mincost_prim(nodes_list, arcs_list, weight_list, b):
     # I sort the list of arcs based off their weight, returning weight will allow us to return total weight later
