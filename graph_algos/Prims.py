@@ -1,6 +1,7 @@
 from graph_algos.Graph_Operations import process_am
 from graph_algos.Graph_Operations import non_zero_vals
 from graph_algos.Graph_Operations import simultaneous_sort
+import random
 
 def add_next_mincost_arc(arcs_list, weight_list, b, total_weight):
     # look through the sorted list of arcs in weight order
@@ -34,7 +35,8 @@ def prim(A):
     T = set()
     # we'd usually pick a random node but for now I'm starting with a1 each time
     # TODO: make node selection random
-    b = {'a1'}
+    b = {f'a{random.randint(1, len(nodes_list))}'}
+    print(b)
     # here we want to sort the arcs by their weight
     weight_list, arcs_list = simultaneous_sort(weight_list, arcs_list)
     total_weight = 0
