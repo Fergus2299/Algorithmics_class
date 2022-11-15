@@ -1,12 +1,4 @@
-adjacency_matrix = [
-    [0,1,0,4,0,0,0],
-    [1,0,2,6,4,0,0],
-    [0,2,0,0,5,6,0],
-    [4,6,0,0,3,0,4],
-    [0,4,5,3,0,8,7],
-    [0,0,6,0,8,0,3],
-    [0,0,0,4,7,3,0],
-]
+
 def process_am(A):
     # create nodes list
     nodes_list = []
@@ -45,14 +37,13 @@ def search(A):
     spanning_tree = []
     for node_num in range(len(Nodes)):
         if Visited[node_num] != True:
-            Visited, spanning_tree = DepthFirstSearch(node_num, Nodes, Arcs, Visited, spanning_tree)
-    return Visited, spanning_tree
+            spanning_tree = DepthFirstSearch(node_num, Nodes, Arcs, Visited, spanning_tree)
+    return spanning_tree
 def DepthFirstSearch(node_num, Nodes, Arcs, Visited, spanning_tree):
     Visited[node_num] = True
     # find adjacent nodes
     adj_list = []
     for arc in Arcs:
-        arcString = f'a{node_num}'
         if f'a{node_num}' in arc:
             # TODO: see if there's a better way than this
             arc = arc[:]
@@ -61,8 +52,17 @@ def DepthFirstSearch(node_num, Nodes, Arcs, Visited, spanning_tree):
             i = Nodes.index(arc[0])
             if Visited[i] != True:
                 spanning_tree.append(arc_copy)
-                Visited, spanning_tree = DepthFirstSearch(i, Nodes, Arcs, Visited, spanning_tree)
-
-    return Visited, spanning_tree
+                spanning_tree = DepthFirstSearch(i, Nodes, Arcs, Visited, spanning_tree)
+    return spanning_tree
 if __name__ == '__main__':
+    """this matrix is meant to represent a non-directed graph since Kruskal and Prim's algos aren't suitable for directed graphs"""
+    adjacency_matrix = [
+        [0, 1, 0, 4, 0, 0, 0],
+        [1, 0, 2, 6, 4, 0, 0],
+        [0, 2, 0, 0, 5, 6, 0],
+        [4, 6, 0, 0, 3, 0, 4],
+        [0, 4, 5, 3, 0, 8, 7],
+        [0, 0, 6, 0, 8, 0, 3],
+        [0, 0, 0, 4, 7, 3, 0],
+    ]
     print(search(adjacency_matrix))
