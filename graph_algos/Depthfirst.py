@@ -54,6 +54,16 @@ def DepthFirstSearch(node_num, Nodes, Arcs, Visited, spanning_tree):
                 spanning_tree.append(arc_copy)
                 spanning_tree = DepthFirstSearch(i, Nodes, Arcs, Visited, spanning_tree)
     return spanning_tree
+def Search2(A):
+    Nodes, Arcs, Weights = process_am(A)
+    Weights, Arcs = non_zero_vals(Weights, Arcs)
+    Visited = ['not Visited' for x in Nodes]
+    for v, visited_val in zip(Nodes, Visited):
+        if visited_val == 'not Visited':
+            # call depthfirst function
+            print(v)
+    return Visited
+def DepthFirstSearch(Nodes)
 if __name__ == '__main__':
     """this matrix is meant to represent a non-directed graph since Kruskal and Prim's algos aren't suitable for directed graphs"""
     adjacency_matrix = [
@@ -65,4 +75,4 @@ if __name__ == '__main__':
         [0, 0, 6, 0, 8, 0, 3],
         [0, 0, 0, 4, 7, 3, 0],
     ]
-    print(search(adjacency_matrix))
+    print(Search2(adjacency_matrix))
