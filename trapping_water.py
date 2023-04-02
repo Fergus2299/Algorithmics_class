@@ -1,4 +1,4 @@
-# brute force method
+# brute force method - not the best
 def trap_water_bruteforce(ground_array):
     water_sum = 0
     for ind, elem in enumerate(ground_array):
