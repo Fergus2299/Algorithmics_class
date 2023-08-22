@@ -48,6 +48,7 @@ def quicksort(T):
         return T
     else:
         T, l = pivot(T)
+        print("T", T, "l", l)
         a = quicksort(T[:l])
         b = quicksort(T[l+1:])
         return a + [T[l]] + b
